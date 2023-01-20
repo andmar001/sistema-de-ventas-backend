@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SistemaVenta.DAL.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using SistemaVenta.DAL.DBContext;
+using SistemaVenta.DAL.Repositorios.Contrato;
+using SistemaVenta.DAL.Repositorios;
 
 namespace SistemaVenta.IOC
 {
@@ -20,6 +23,9 @@ namespace SistemaVenta.IOC
             {
                 options.UseSqlServer(configuration.GetConnectionString("cadenaSQL"));
             });
+
+            service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));   //inyeccion de dependencia de manera generica, uso en cualquier modelo
+            service.AddScoped<IVentaRepository,VentaRepository>();                             //inyeccion de dependencia . solo modelo de venta
         }
     }
 }
