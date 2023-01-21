@@ -15,3 +15,4 @@ public partial class Rol
 
     public virtual ICollection<Usuario> Usuarios { get; } = new List<Usuario>();
 }
+  
