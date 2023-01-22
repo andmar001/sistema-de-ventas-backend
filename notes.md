@@ -32,3 +32,6 @@ CreateMap<Rol, RolDTO>();
 Instalaciones -
 Automapper
 Automapper extension
+
+
+# db - Por medio de Scaffold
